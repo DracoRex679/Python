@@ -1,0 +1,19 @@
+#The following code explains how to remove duplicates from a list in Python.
+def remove_duplicates(nums):
+    copy = []
+    for num in nums:
+        nums.sort()
+        #The array is sorted
+    for num in nums:
+        if num not in copy:
+            copy.append(num)
+            #If a number is already in the copied arrray, it isn't added again.
+    x = len(copy)
+    print("The length of the data is %x without duplicates." %x)
+    #The function auto-prints the new length
+    print(copy)
+    #The function auto prints the new data
+data = [30, 5, 10, 15, 15, 20]
+
+remove_duplicates(data)
+#How you call the function
