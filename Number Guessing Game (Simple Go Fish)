@@ -1,0 +1,59 @@
+import random
+import sys
+
+#Creates a list of seven numbers/cards
+list = [0, 0, 0, 0, 0, 0, 0]
+#Creates a random list of numbers between 1 and 9
+randomlist = [1, 2, 3, 4, 5, 6, 7, 9]
+#list 2 is equivalent to list
+list2 = list
+
+#for the index, num in the enumerate list
+for index, num in enumerate(list):
+    #y is equal to a random choice from randomlist
+    y = random.choice(randomlist)
+    #Each number in list 2 is given a random value from y
+    #Can also be implemented directly but implemented to clearly explain mechanics.
+    list2[index] = y
+
+#Creates the function nowChoose
+def nowChoose(list2):
+    #The player chooses a number
+    choice = input("Guess what numbers I'm holding between 1 and 9: ")
+    #Try checks to see if the choice can be converted to an int.
+    try:
+        #if the number can be converted to an int. Choice is set equal to the integer value of the input.
+        choice = int(choice)
+        #If the input can't be converted to an int.
+    except:
+        #Prints "Huh?" to alert player that they have input a value that can't be converted to a number.
+        print("Huh?")
+        #nowChoose is reinitiated to allow the player to select another number.
+        nowChoose(list2)
+        #If the choice is in list 2
+    if choice in list2:
+        #while the choice is still in list 2
+        while choice in list2:
+            #remove the choice from list 2
+            list2.remove(choice)
+            #Prints the exposition. "Okay. I have that..." to alert player that their answer was correct.
+        print("Okay. I have that...")
+        #x is equal to the length of the list after deletion of components.
+        x = len(list)
+        #if the length of the list is 0
+        if x == 0:
+            #The computer tells the player they won.
+            print("You won. Congratulations!")
+            #Asks for an input before exiting the system.
+            input()
+            sys.exit()
+            #Otherwise nowChoose is reinitiated to eliminate more numbers.
+        else:
+            nowChoose(list2)
+            #If the number is not in the list/hand, the system prints that it doesn't have the number in the list/hand.
+            #The nowChoose function is then reinitiated.
+    else:
+        print("Nope. Don't have that. Sorry!")
+        nowChoose(list2)
+#Activates the initial function for nowChoose.
+nowChoose(list2)
