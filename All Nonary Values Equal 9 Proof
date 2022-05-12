@@ -1,0 +1,37 @@
+#Creates an array that will hold the multiples of 9 * 9, which starts with a 9 value
+memo = [9]
+
+#Creates a generator for 9 factored multiples.
+#Can also work exponentially with slight alterations.
+def nineGenerator(value:int):
+    while value:
+        multiple = memo[-1]+9
+        memo.append(multiple)
+        value-=1
+        
+#Adds each value into itself.
+#Example: 18 becomes 1+8=9, 27 becomes 2+7=9
+def nineCalculator(value:int, memo):
+    if len(memo)-1 != value:
+        nineGenerator(value)
+    print(memo)
+    length = len(memo)
+    print(length-1)
+    for i in range(length):
+        result = 0
+        number = memo[i]
+        if number//10 >=1:
+            while number:
+                remainder = number % 10 
+                result += remainder
+                number//=10
+            memo[i] = result
+       # elif number == 18:
+            #memo[i] = 9
+        else: memo[i] = memo[i]
+    if memo[-1] != 9:
+        return nineCalculator(value, memo)
+    return memo
+    
+#Call the function and return the end value
+print(nineCalculator(100, memo))
