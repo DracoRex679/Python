@@ -34,4 +34,4 @@ def nineCalculator(value:int, memo):
     return memo
     
 #Call the function and return the end value
-print(nineCalculator(100, memo))
+print(nineCalculator(100, memo)) 
