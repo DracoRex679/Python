@@ -1,0 +1,16 @@
+def pierats(s:str):
+    array = []
+    array = list(s[::])
+    print("".join(array))
+    p = "p"
+    i = "i"
+    e = "e"
+    while p in array:
+        array.remove(p)
+    while i in array:
+        array.remove(i)
+    while e in array:
+        array.remove(e)
+    array = "".join(array)
+    return array
+print(pierats("pirates"))
