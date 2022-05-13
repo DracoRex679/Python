@@ -1,0 +1,25 @@
+#Creates array and removes letters to be removed from the list.
+def pirates(s:str):
+    array = []
+    p = "p"
+    i = "i"
+    e = "e"
+    array = list(s[::])
+    print("".join(array))
+    length = len(array)
+    #Trys to remove the letters p, i, and e.
+    try:
+        for iterable in range(length):
+            if array[iterable] == p:
+                array.remove(p)
+            if array[iterable] == i:
+                array.remove(i)
+            if array[iterable] == e:
+                array.remove(e)
+    #Passes an exception that allows for a returnable array.
+    except:
+        array = "".join(array)
+        return array
+        
+#prints the return value of the array
+print(pirates("pirates"))
