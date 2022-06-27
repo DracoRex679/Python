@@ -1,0 +1,59 @@
+import turtle
+import random
+
+racing = False
+redt = turtle.Turtle(shape="turtle")
+bluet = turtle.Turtle(shape="turtle")
+greent = turtle.Turtle(shape="turtle")
+blackt = turtle.Turtle(shape="turtle")
+brownt = turtle.Turtle(shape="turtle")
+redt.penup()
+bluet.penup()
+greent.penup()
+blackt.penup()
+brownt.penup()
+redt.color("red")
+bluet.color("blue")
+greent.color("green")
+blackt.color("black")
+brownt.color("brown")
+user_bet = turtle.textinput("Who will win the race?", "Enter your turtle here.")
+redt.goto(-250, -250)
+bluet.goto(-250, -230)
+greent.goto(-250, -210)
+blackt.goto(-250, -190)
+brownt.goto(-250, -170)
+screen = turtle.Screen()
+
+
+def turtle_race():
+    while racing:
+        winner = None
+        redt.forward(random.randint(1, 10))
+        bluet.forward(random.randint(1, 10))
+        greent.forward(random.randint(1, 10))
+        blackt.forward(random.randint(1, 10))
+        brownt.forward(random.randint(1, 10))
+        if redt.position() >= (250, -250):
+            winner = "red"
+        elif bluet.position() >= (250, -230):
+            winner = "blue"
+        elif greent.position() >= (250, -210):
+            winner = "green"
+        elif blackt.position() >= (250, -190):
+            winner = "black"
+        elif brownt.position() >= (250, -170):
+            winner = "brown"
+        if winner == user_bet:
+            turtle.textinput("You win!", "You win!")
+            return 0
+        if winner != None:
+            turtle.textinput("You lost!", "You lost!")
+            return 0
+
+
+if user_bet:
+    racing = True
+if racing == True:
+    turtle_race()
+screen.exitonclick()
